@@ -18,28 +18,28 @@ export default function ActivityAddtion(){
     );
 
     const onPress = () => () => {
-        const activites = require('../Activites');
-        if(state.activtyName === ""){
-            if(Platform.OS === "web"){
-             confirm("Activity name can't be emtpy!");
-            }
-            else{
-              emptyActivityAlert();
-            }
-        }
-        else{
-            if(activites.length === 0){
-              activites.push({key:1, name: state.activtyName, date: new Date().toLocaleString()})
-            }
-            else{
-               const lastKey = activites[activites.length - 1].key
-               activites.push({key: lastKey + 1, name: state.activtyName, date: new Date().toLocaleString()});
-               setState((prevState) => {
-                return {...prevState, 
-                    activtyName : ""};
-                });
-            }
-        }
+        // const activites = require('../Activites');
+        // if(state.activtyName === ""){
+        //     if(Platform.OS === "web"){
+        //      confirm("Activity name can't be emtpy!");
+        //     }
+        //     else{
+        //       emptyActivityAlert();
+        //     }
+        // }
+        // else{
+        //     if(activites.length === 0){
+        //       activites.push({key:1, name: state.activtyName, date: new Date().toLocaleString()})
+        //     }
+        //     else{
+        //        const lastKey = activites[activites.length - 1].key
+        //        activites.push({key: lastKey + 1, name: state.activtyName, date: new Date().toLocaleString()});
+        //        setState((prevState) => {
+        //         return {...prevState, 
+        //             activtyName : ""};
+        //         });
+        //     }
+        // }
       };
 
    

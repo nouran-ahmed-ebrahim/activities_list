@@ -6,26 +6,25 @@ export default function Activity({ActivityKey, ActivityName , CurrentDate}){
     const EditBtn = ["Edit", 70, 50, "#fcd0c7", "#661825", 10]
     const deleteBtn = ["Delete", 70 , 50, "red", "black", 10]
     const [state, setState] = React.useState({activityKey: ActivityKey, activityName:ActivityName, currentDate: CurrentDate });
-    const activites = require('../Activites');
 
     const deleteItem = () => () =>{
 
-      for (let index in activites) {
-        if (activites[index].key === state.activityKey) {
-            activites.splice(index, 1);
-            break;
-        }
-      }
+    //   for (let index in activites) {
+    //     if (activites[index].key === state.activityKey) {
+    //         activites.splice(index, 1);
+    //         break;
+    //     }
+    //   }
     }
 
     const editItem = () => () =>{
-      const activites = require('../Activites');
+    //   const activites = require('../Activites');
   
-        for (let index in activites) {
-          if (activites[index].key === state.activityKey) {
-              activites.splice(index, 1);
-          }
-        }
+    //     for (let index in activites) {
+    //       if (activites[index].key === state.activityKey) {
+    //           activites.splice(index, 1);
+    //       }
+    //     }
       }
 
     return(

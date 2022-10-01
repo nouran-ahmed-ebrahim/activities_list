@@ -2,8 +2,7 @@ import React from "react";
 import { FlatList, View} from 'react-native';
 import Activity from './Activity';
 
-export default function ActivitiesList(){
-    const Activites = require('../Activites');
+export default function ActivitiesList({Activites}){
 
     return(
       <View>
