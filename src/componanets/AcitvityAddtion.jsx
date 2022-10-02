@@ -6,7 +6,7 @@ export default function ActivityAddtion({addActivityFun, Name}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
     const [state, setState] = React.useState({activityName: ""});
   
-    const  emptyActivityAlert= () =>
+    const  emptyActivityAlert= function(){
     Alert.alert(
       "illegal Addtion",
       "Activity name can't be emtpy!",
@@ -15,26 +15,33 @@ export default function ActivityAddtion({addActivityFun, Name}){
         { text: "OK"}
       ]
     );
-
+    }
+    
+    const launchEpmtyTxtAlert= function(){
+      if(Platform.OS === "web"){
+        confirm("Activity name can't be emtpy!");
+       }
+       else{
+         emptyActivityAlert();
+       }
+    }
+    
     const onPress = () => () => {
         if(state.activityName === ""){
-            if(Platform.OS === "web"){
-             confirm("Activity name can't be emtpy!");
-            }
-            else{
-              emptyActivityAlert();
-            }
+          launchEpmtyTxtAlert();
         }
         else{
-             addActivityFun(state.activityName)
-             setState((prevState) => {
-                return {...prevState, 
-                    activityName : ""};
-                });
+             addActivityFun(state.activityName);
+             clearInputTextValue();
         }
       };
 
-   
+      const clearInputTextValue =function () {
+        setState((prevState) => {
+          return {...prevState, 
+              activityName : ""};
+          }); 
+      }
    
     return(
         <View style = {styles.container}>
