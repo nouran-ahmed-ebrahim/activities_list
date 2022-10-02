@@ -4,7 +4,7 @@ import Appbutton from "./AppButton";
 
 export default function ActivityAddtion({addActivityFun}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
-    const [state, setState] = React.useState({activtyName: ""});
+    const [state, setState] = React.useState({activityName: ""});
   
     const  emptyActivityAlert= () =>
     Alert.alert(
@@ -17,7 +17,7 @@ export default function ActivityAddtion({addActivityFun}){
     );
 
     const onPress = () => () => {
-        if(state.activtyName === ""){
+        if(state.activityName === ""){
             if(Platform.OS === "web"){
              confirm("Activity name can't be emtpy!");
             }
@@ -26,10 +26,10 @@ export default function ActivityAddtion({addActivityFun}){
             }
         }
         else{
-             addActivityFun(state.activtyName)
+             addActivityFun(state.activityName)
              setState((prevState) => {
                 return {...prevState, 
-                    activtyName : ""};
+                    activityName : ""};
                 });
         }
       };
@@ -39,12 +39,12 @@ export default function ActivityAddtion({addActivityFun}){
         <View style = {styles.container}>
             <TextInput 
              style= {styles.inputStyle}
-             value= {state.activtyName}
+             value= {state.activityName}
              placeholder= "Enter your activity"
              onChangeText={(name)=>{
                 setState((prevState) => {
                     return {...prevState, 
-                        activtyName : name};
+                        activityName : name};
               });
              }}
              >

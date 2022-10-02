@@ -2,7 +2,7 @@ import React from "react";
 import {View, StyleSheet, Text, Platform,Alert} from "react-native"
 import Appbutton from "./AppButton";
 
-export default function Activity({ActivityKey, ActivityName , CurrentDate, deleteActivity}){
+export default function Activity({ActivityKey, ActivityName , CurrentDate, deleteActivity, editActivity}){
     const EditBtn = ["Edit", 70, 50, "#fcd0c7", "#661825", 10]
     const deleteBtn = ["Delete", 70 , 50, "red", "black", 10]
     const [state, setState] = React.useState({activityKey: ActivityKey, activityName:ActivityName, currentDate: CurrentDate });
@@ -32,14 +32,9 @@ export default function Activity({ActivityKey, ActivityName , CurrentDate, delet
      }
     }
 
-    const editItem = () => () =>{
-  
-    //     for (let index in activites) {
-    //       if (activites[index].key === state.activityKey) {
-    //           activites.splice(index, 1);
-    //       }
-    //     }
-      }
+    const editItem =  function(){
+      editActivity(state.activityKey, state.activityName)
+    }
 
     return(
       <View style= {styles.container}>
@@ -59,6 +54,7 @@ export default function Activity({ActivityKey, ActivityName , CurrentDate, delet
          color= {EditBtn[3]} 
          backgroundColor= {EditBtn[4]}
          margin= {EditBtn[5]}
+         onPressFun= {editItem}
          />
   
 
