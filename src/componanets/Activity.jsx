@@ -1,24 +1,38 @@
 import React from "react";
-import {View, StyleSheet, Text} from "react-native"
+import {View, StyleSheet, Text, Platform,Alert} from "react-native"
 import Appbutton from "./AppButton";
 
-export default function Activity({ActivityKey, ActivityName , CurrentDate}){
+export default function Activity({ActivityKey, ActivityName , CurrentDate, deleteActivity}){
     const EditBtn = ["Edit", 70, 50, "#fcd0c7", "#661825", 10]
     const deleteBtn = ["Delete", 70 , 50, "red", "black", 10]
     const [state, setState] = React.useState({activityKey: ActivityKey, activityName:ActivityName, currentDate: CurrentDate });
 
-    const deleteItem = () => () =>{
+    const  deleteActivityAlert= () =>
+  
+    Alert.alert(
+      "Delete Activity?",
+      "Are you sure that you whant to delete the Activity?",
+      [
+        { text: "Cancel"},
+        { 
+          text: "OK" ,
+          onPress: () => {
+            return deleteActivity(state.activityKey);
+          }
+        }
+      ]
+    );
 
-    //   for (let index in activites) {
-    //     if (activites[index].key === state.activityKey) {
-    //         activites.splice(index, 1);
-    //         break;
-    //     }
-    //   }
+    const deleteActivityFun = function(){
+     if(Platform.OS === "web"){
+      deleteActivity(state.activityKey);
+     }
+     else{
+      deleteActivityAlert();
+     }
     }
 
     const editItem = () => () =>{
-    //   const activites = require('../Activites');
   
     //     for (let index in activites) {
     //       if (activites[index].key === state.activityKey) {
@@ -56,7 +70,7 @@ export default function Activity({ActivityKey, ActivityName , CurrentDate}){
          backgroundColor= {deleteBtn[4]}
          margin= {deleteBtn[5]}
 
-         onPressFun= {deleteItem()}/>
+         onPressFun= {deleteActivityFun}/>
 
         </View>
       </View>

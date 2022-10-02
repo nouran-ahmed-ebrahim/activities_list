@@ -32,12 +32,25 @@ export default function Home(){
           });
     }
 
+    const deleteActivity = function(activityKey){
+     const newActivities =state.activites;
+     for (let index in newActivities) {
+        if (newActivities[index].key === activityKey) {
+            newActivities.splice(index, 1);
+            break;
+        }
+      }
+      setState((prevState) =>{
+        return {...prevState, newActivities};
+      });
+    }
+
     return(
         <View>
            <ImageBackground source={img} resizeMode="cover" style={styles.container}>
              <ActivityAddtion addActivityFun = {addActivity}/>
              <View style ={styles.list}>
-                <ActivitiesList Activites= {state.activites}/>
+                <ActivitiesList Activites= {state.activites} deleteActivityFun = {deleteActivity}/>
             </View>
            </ImageBackground>
         </View>

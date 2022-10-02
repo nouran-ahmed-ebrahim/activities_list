@@ -2,7 +2,7 @@ import React from "react";
 import { FlatList, View} from 'react-native';
 import Activity from './Activity';
 
-export default function ActivitiesList({Activites}){
+export default function ActivitiesList({Activites, deleteActivityFun}){
 
     return(
       <View>
@@ -14,6 +14,7 @@ export default function ActivitiesList({Activites}){
                ActivityKey= {item.key}
                ActivityName={item.name}
                CurrentDate={item.date}
+               deleteActivity = {deleteActivityFun}
                />)}
             />
       </View>
