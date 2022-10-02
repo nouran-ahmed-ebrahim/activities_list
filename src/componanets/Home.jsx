@@ -5,7 +5,7 @@ import ActivitiesList from "./ActivitiesList";
 
 export default function Home(){
     const [editedActivityInfo, setInfo] =  React.useState({activityKey: -1, activityName: "" });
-    const img = require('../Images/black_Background.png');
+    const img = require('../Images/background2.png');
     const [state, setActivities] = React.useState({
         activites: [
         {key:1, name :"Play Chess", date: "9/29/2022, 9:42:36 PM"},
