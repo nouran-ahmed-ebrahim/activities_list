@@ -83,7 +83,7 @@ export default function Home(){
     return(
         <View>
            <ImageBackground source={img} resizeMode="cover" style={styles.container}>
-             <ActivityAddtion addActivityFun = {newActivity}/>
+             <ActivityAddtion addActivityFun = {newActivity}  activityName ={editedActivityInfo.activityName}/>
              <View style ={styles.list}>
                 <ActivitiesList 
                    Activites= {state.activites} 

@@ -2,9 +2,9 @@ import  React from "react";
 import { View, StyleSheet , TextInput,Platform,Alert } from "react-native";
 import Appbutton from "./AppButton";
 
-export default function ActivityAddtion({addActivityFun}){
+export default function ActivityAddtion({addActivityFun, Name}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
-    const [state, setState] = React.useState({activityName: ""});
+    const [state, setState] = React.useState({activityName: Name});
   
     const  emptyActivityAlert= () =>
     Alert.alert(
@@ -34,6 +34,7 @@ export default function ActivityAddtion({addActivityFun}){
         }
       };
 
+   
    
     return(
         <View style = {styles.container}>
