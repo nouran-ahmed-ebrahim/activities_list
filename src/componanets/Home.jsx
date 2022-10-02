@@ -15,12 +15,27 @@ export default function Home(){
         {key:6, name :"Read Novel", date: "9/29/2022, 10:42:36 PM"},
         {key:7, name :"Solve the Task", date: "9/29/2022, 7:42:36 PM"},
         {key:8, name :"Study", date: "9/29/2022, 5:42:36 PM"},
-]});
+    ]});
+  
+    const addActivity = function(activityName){
+        const newActivities =state.activites;
+
+        if(newActivities.length === 0){
+            newActivities.push({key:1, name: activityName, date: new Date().toLocaleString()})
+          }
+          else{
+             const lastKey = newActivities[newActivities.length - 1].key
+             newActivities.push({key: lastKey + 1, name: activityName, date: new Date().toLocaleString()});
+          }
+          setState((prevState) =>{
+            return {...prevState, newActivities};
+          });
+    }
 
     return(
         <View>
            <ImageBackground source={img} resizeMode="cover" style={styles.container}>
-             <ActivityAddtion/>
+             <ActivityAddtion addActivityFun = {addActivity}/>
              <View style ={styles.list}>
                 <ActivitiesList Activites= {state.activites}/>
             </View>

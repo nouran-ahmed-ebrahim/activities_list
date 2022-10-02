@@ -1,9 +1,8 @@
 import  React from "react";
 import { View, StyleSheet , TextInput,Platform,Alert } from "react-native";
-import activites from "../Activites";
 import Appbutton from "./AppButton";
 
-export default function ActivityAddtion(){
+export default function ActivityAddtion({addActivityFun}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
     const [state, setState] = React.useState({activtyName: ""});
   
@@ -18,28 +17,21 @@ export default function ActivityAddtion(){
     );
 
     const onPress = () => () => {
-        // const activites = require('../Activites');
-        // if(state.activtyName === ""){
-        //     if(Platform.OS === "web"){
-        //      confirm("Activity name can't be emtpy!");
-        //     }
-        //     else{
-        //       emptyActivityAlert();
-        //     }
-        // }
-        // else{
-        //     if(activites.length === 0){
-        //       activites.push({key:1, name: state.activtyName, date: new Date().toLocaleString()})
-        //     }
-        //     else{
-        //        const lastKey = activites[activites.length - 1].key
-        //        activites.push({key: lastKey + 1, name: state.activtyName, date: new Date().toLocaleString()});
-        //        setState((prevState) => {
-        //         return {...prevState, 
-        //             activtyName : ""};
-        //         });
-        //     }
-        // }
+        if(state.activtyName === ""){
+            if(Platform.OS === "web"){
+             confirm("Activity name can't be emtpy!");
+            }
+            else{
+              emptyActivityAlert();
+            }
+        }
+        else{
+             addActivityFun(state.activtyName)
+             setState((prevState) => {
+                return {...prevState, 
+                    activtyName : ""};
+                });
+        }
       };
 
    
