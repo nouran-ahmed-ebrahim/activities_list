@@ -25,7 +25,7 @@ export default function ActivityAddtion({addActivityFun, Name}){
          emptyActivityAlert();
        }
     }
-    
+
     const onPress = () => () => {
         if(state.activityName === ""){
           launchEpmtyTxtAlert();
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   
     inputStyle:{
         borderColor: "#661825",
-        backgroundColor: "#4c3e3c",
+        backgroundColor: "#b18e72",
         borderRadius:4,
         borderWidth:2,
         height: 60,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         fontFamily: "timesNewRoman",
         fontStyle: "italic",
         fontSize: 18,
-        color: "#fcd0c7",
+        color: "white",
     }
 });
 

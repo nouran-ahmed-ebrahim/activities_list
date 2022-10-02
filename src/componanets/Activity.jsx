@@ -4,7 +4,7 @@ import Appbutton from "./AppButton";
 
 export default function Activity({ActivityKey, ActivityName , CurrentDate, deleteActivity, editActivity}){
     const EditBtn = ["Edit", 70, 50, "#fcd0c7", "#661825", 10]
-    const deleteBtn = ["Delete", 70 , 50, "red", "black", 10]
+    const deleteBtn = ["Delete", 70 , 50, "red", "#282726", 10]
     const [state, setState] = React.useState({activityKey: ActivityKey, activityName:ActivityName, currentDate: CurrentDate });
 
     const  deleteActivityAlert= () =>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
       },
 
       nameStyle:{
-         color: "#fcd0c7",
+         color: "#661825",
          fontSize: 17,
          fontStyle:"italic",
          fontFamily: "timesNewRoman",
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         },
         
         dateStyle:{
-             color: "#fcd0c7",
+             color: "#661825",
              fontSize: 14,
              fontStyle:"italic",
              fontFamily: "timesNewRoman",
