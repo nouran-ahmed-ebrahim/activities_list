@@ -50,8 +50,6 @@ export default function ActivityAddtion({addActivityFun, currentActivityName,  e
         //       return {...prevState, 
         //           activityName : name};
         // });
-        console.log(newActivityName);
-        console.log(typeof(editHomeActivityName));
           editHomeActivityName(newActivityName);
       }
 
