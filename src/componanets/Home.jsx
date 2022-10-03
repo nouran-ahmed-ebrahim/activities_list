@@ -7,7 +7,7 @@ export default function Home(){
     const img = require('../Images/background2.png');
     const [state, setState] = React.useState({
        activityKey: -1, 
-       activityName: '',
+       activityName: "",
         activites: [
         {key:1, name :"Play Chess", date: "9/29/2022, 9:42:36 PM"},
         {key:2, name :"Read Novel", date: "9/29/2022, 10:42:36 PM"},
@@ -43,14 +43,20 @@ export default function Home(){
           });
     }
 
+    const findActivityIndex= function(activityKey){
+        const newActivities= state.activites;
+        for (let index in newActivities) {
+           if (newActivities[index].key === activityKey) {
+               return index;
+           }
+        }
+    }
+
     const deleteActivity = function(activityKey){
      const newActivities =state.activites;
-     for (let index in newActivities) {
-        if (newActivities[index].key === activityKey) {
-            newActivities.splice(index, 1);
-            break;
-        }
-      }
+     const ActivityIndex = findActivityIndex(activityKey);
+     newActivities.splice(ActivityIndex, 1);
+       
       setState((prevState) =>{
         return {...prevState, activites:newActivities};
       });
@@ -61,25 +67,17 @@ export default function Home(){
       setState((prevState)=>{
         return {...prevState, activityKey: currentKey, activityName: currentName }
       }) 
-      console.log(state.activityName);
-      console.log("currentName");
     }
 
     const editeActivity = function(activityKey, activityName){
-        setEditedActivityInfo(-1, "");
         const newActivities= state.activites;
-        let activityIdx = 0;
-        for (let index in newActivities) {
-           if (newActivities[index].key === activityKey) {
-               activityIdx = index;
-               break;
-           }
-        }
+        let activityIdx =findActivityIndex(activityKey);
          newActivities[activityIdx].date = new Date().toLocaleString();
          newActivities[activityIdx].name = activityName;
          setState((prevState) =>{
             return {...prevState, activites:newActivities};
         });        
+        setEditedActivityInfo(-1, "");
     }
 
     return(
