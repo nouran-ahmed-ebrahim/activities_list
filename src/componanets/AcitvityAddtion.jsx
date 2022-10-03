@@ -2,9 +2,9 @@ import  React from "react";
 import { View, StyleSheet , TextInput,Platform,Alert } from "react-native";
 import Appbutton from "./AppButton";
 
-export default function ActivityAddtion({addActivityFun, Name}){
+export default function ActivityAddtion({addActivityFun, currentActivityName,  editHomeActivityName}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
-   // const [state, setState] = React.useState({activityName: ""});
+  //  const [state, setState] = React.useState({activityName: currentActivityName});
   
     const  emptyActivityAlert= function(){
     Alert.alert(
@@ -27,39 +27,41 @@ export default function ActivityAddtion({addActivityFun, Name}){
     }
 
     const onPress = () => () => {
-      console.log(Name);
-      // if(state.activityName ){
-        if(!Name){
+      console.log(currentActivityName);
+       if(!currentActivityName ){
           launchEpmtyTxtAlert();
         }
         else{
-             addActivityFun(Name)//state.activityName);
+             addActivityFun(currentActivityName);
              clearInputTextValue();
         }
-      };
+    }
 
       const clearInputTextValue =function () {
+        editHomeActivityName("");
         // setState((prevState) => {
         //   return {...prevState, 
         //       activityName : ""};
         //   });
-        console.log("text cleared")
-        Name = ""; 
       }
-   
+      
+      function changeActivityName(newActivityName){
+        //   setState((prevState) => {
+        //       return {...prevState, 
+        //           activityName : name};
+        // });
+        console.log(newActivityName);
+        console.log(typeof(editHomeActivityName));
+          editHomeActivityName(newActivityName);
+      }
+
     return(
         <View style = {styles.container}>
             <TextInput 
              style= {styles.inputStyle}
-             value=  {Name}//{state.activityName}
+             value=  {currentActivityName} //{state.activityName}
              placeholder= "Enter your activity"
-             onChangeText={(name)=>{
-              //   setState((prevState) => {
-              //       return {...prevState, 
-              //           activityName : name};
-              // });
-              Name= name;
-             }}
+             onChangeText={changeActivityName}
              >
              </TextInput>
              <View>
@@ -101,7 +103,3 @@ const styles = StyleSheet.create({
     }
 });
 
-
-      // const callback = useCallback((activityName) => {
-      //   setState(activityName);
-      // }, []);..

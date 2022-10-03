@@ -69,6 +69,13 @@ export default function Home(){
       }) 
     }
 
+    const editActivityName = function(name){
+        setState((prevState)=>{
+          return {...prevState,  activityName:name }
+        }) 
+        console.log(state.activityName) 
+    }
+
     const editeActivity = function(activityKey, activityName){
         const newActivities= state.activites;
         let activityIdx =findActivityIndex(activityKey);
@@ -83,7 +90,11 @@ export default function Home(){
     return(
         <View>
            <ImageBackground source={img} resizeMode="cover" style={styles.container}>
-             <ActivityAddtion addActivityFun = {newActivity}  activityName ={state.activityName}/>
+             <ActivityAddtion 
+               addActivityFun = {newActivity} 
+               activityName ={state.activityName}
+               clearHomeActivityName = {editActivityName}
+               />
              <View style ={styles.list}>
                 <ActivitiesList 
                    Activites= {state.activites} 
