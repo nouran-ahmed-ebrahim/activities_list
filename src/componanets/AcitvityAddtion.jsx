@@ -4,7 +4,7 @@ import Appbutton from "./AppButton";
 
 export default function ActivityAddtion({addActivityFun, Name}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
-    const [state, setState] = React.useState({activityName: ""});
+   // const [state, setState] = React.useState({activityName: ""});
   
     const  emptyActivityAlert= function(){
     Alert.alert(
@@ -27,33 +27,38 @@ export default function ActivityAddtion({addActivityFun, Name}){
     }
 
     const onPress = () => () => {
-        if(state.activityName === ""){
+      console.log(Name);
+      // if(state.activityName ){
+        if(!Name){
           launchEpmtyTxtAlert();
         }
         else{
-             addActivityFun(state.activityName);
+             addActivityFun(Name)//state.activityName);
              clearInputTextValue();
         }
       };
 
       const clearInputTextValue =function () {
-        setState((prevState) => {
-          return {...prevState, 
-              activityName : ""};
-          }); 
+        // setState((prevState) => {
+        //   return {...prevState, 
+        //       activityName : ""};
+        //   });
+        console.log("text cleared")
+        Name = ""; 
       }
    
     return(
         <View style = {styles.container}>
             <TextInput 
              style= {styles.inputStyle}
-             value= {state.activityName}
+             value=  {Name}//{state.activityName}
              placeholder= "Enter your activity"
              onChangeText={(name)=>{
-                setState((prevState) => {
-                    return {...prevState, 
-                        activityName : name};
-              });
+              //   setState((prevState) => {
+              //       return {...prevState, 
+              //           activityName : name};
+              // });
+              Name= name;
              }}
              >
              </TextInput>
