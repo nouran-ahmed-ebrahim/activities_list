@@ -17,15 +17,6 @@ export default function ActivityAddtion({addActivityFun, currentActivityName}){
     );
     }
     
-    const successfulAdditionAlert= function(){
-      Alert.alert(
-        "Successful Addition",
-        "Activity added Successful",
-        [
-          { text: "OK"}
-        ]
-      );
-      }  
     
     const launchEpmtyTxtAlert= function(){
       if(Platform.OS === "web"){
@@ -36,14 +27,6 @@ export default function ActivityAddtion({addActivityFun, currentActivityName}){
        }
     }
 
-    const launchSuccessfulAdditionAlert= function(){
-      if(Platform.OS === "web"){
-        confirm("Activity added Successful!");
-       }
-       else{
-         successfulAdditionAlert();
-       }
-    }
     
     const onPress = () => () => {
        if(!state.activityName ){
@@ -52,7 +35,6 @@ export default function ActivityAddtion({addActivityFun, currentActivityName}){
         else{
              addActivityFun(state.activityName);
              clearInputTextValue();
-             launchSuccessfulAdditionAlert();
         }
     }
 
