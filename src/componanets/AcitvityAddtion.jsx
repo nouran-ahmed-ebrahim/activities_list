@@ -4,7 +4,7 @@ import Appbutton from "./AppButton";
 
 export default function ActivityAddtion({addActivityFun, currentActivityName,  editHomeActivityName}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
-  //  const [state, setState] = React.useState({activityName: currentActivityName});
+   const [state, setState] = React.useState({activityName: ""});
   
     const  emptyActivityAlert= function(){
     Alert.alert(
@@ -27,39 +27,40 @@ export default function ActivityAddtion({addActivityFun, currentActivityName,  e
     }
 
     const onPress = () => () => {
-      console.log(currentActivityName);
-       if(!currentActivityName ){
+       if(!state.activityName ){
           launchEpmtyTxtAlert();
         }
         else{
-             addActivityFun(currentActivityName);
+             addActivityFun(state.activityName);
              clearInputTextValue();
         }
     }
 
       const clearInputTextValue =function () {
-        editHomeActivityName("");
-        // setState((prevState) => {
-        //   return {...prevState, 
-        //       activityName : ""};
-        //   });
+        // editHomeActivityName("");
+        setState((prevState) => {
+          return {...prevState, 
+              activityName : ""};
+          });
       }
       
       function changeActivityName(newActivityName){
-        //   setState((prevState) => {
-        //       return {...prevState, 
-        //           activityName : name};
-        // });
-          editHomeActivityName(newActivityName);
+        
+          // editHomeActivityName(newActivityName);
       }
 
     return(
         <View style = {styles.container}>
             <TextInput 
              style= {styles.inputStyle}
-             value=  {currentActivityName} //{state.activityName}
+             value=  {state.activityName} //{currentActivityName} 
              placeholder= "Enter your activity"
-             onChangeText={changeActivityName}
+             onChangeText={(name)=>{
+              setState((prevState) => {
+                return {...prevState, 
+                    activityName : name};
+                 });
+             }}
              >
              </TextInput>
              <View>
