@@ -6,7 +6,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Home/>
-      {/* <Activity ActivityName="hallo"currentDate={new Date().toLocaleString()}></Activity>      */}
     </View>
   );
 }

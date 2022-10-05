@@ -2,7 +2,7 @@ import  React from "react";
 import { View, StyleSheet , TextInput,Platform,Alert } from "react-native";
 import Appbutton from "./AppButton";
 
-export default function ActivityAddtion({addActivityFun, Name}){
+export default function ActivityAddtion({addActivityFun, currentActivityName}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
     const [state, setState] = React.useState({activityName: ""});
   
@@ -27,34 +27,35 @@ export default function ActivityAddtion({addActivityFun, Name}){
     }
 
     const onPress = () => () => {
-        if(state.activityName === ""){
+       if(!state.activityName ){
           launchEpmtyTxtAlert();
         }
         else{
              addActivityFun(state.activityName);
              clearInputTextValue();
         }
-      };
+    }
 
       const clearInputTextValue =function () {
         setState((prevState) => {
           return {...prevState, 
               activityName : ""};
-          }); 
+          });
       }
-   
+      
+
     return(
         <View style = {styles.container}>
             <TextInput 
              style= {styles.inputStyle}
-             value= {state.activityName}
+             value=  {state.activityName} //{currentActivityName} 
              placeholder= "Enter your activity"
              onChangeText={(name)=>{
-                setState((prevState) => {
-                    return {...prevState, 
-                        activityName : name};
-              });
-             }}
+              setState((prevState) => {
+                return {...prevState, 
+                    activityName : name};
+                 });
+              }}
              >
              </TextInput>
              <View>
@@ -96,7 +97,3 @@ const styles = StyleSheet.create({
     }
 });
 
-
-      // const callback = useCallback((activityName) => {
-      //   setState(activityName);
-      // }, []);..
