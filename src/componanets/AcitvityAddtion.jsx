@@ -17,15 +17,34 @@ export default function ActivityAddtion({addActivityFun, currentActivityName}){
     );
     }
     
+    const successfulAdditionAlert= function(){
+      Alert.alert(
+        "Successful Addition",
+        "Activity added Successful",
+        [
+          { text: "OK"}
+        ]
+      );
+      }  
+    
     const launchEpmtyTxtAlert= function(){
       if(Platform.OS === "web"){
-        confirm("Activity name can't be emtpy!");
+        confirm("Activity name can't be emtpy");
        }
        else{
          emptyActivityAlert();
        }
     }
 
+    const launchSuccessfulAdditionAlert= function(){
+      if(Platform.OS === "web"){
+        confirm("Activity added Successful!");
+       }
+       else{
+         successfulAdditionAlert();
+       }
+    }
+    
     const onPress = () => () => {
        if(!state.activityName ){
           launchEpmtyTxtAlert();
@@ -33,6 +52,7 @@ export default function ActivityAddtion({addActivityFun, currentActivityName}){
         else{
              addActivityFun(state.activityName);
              clearInputTextValue();
+             launchSuccessfulAdditionAlert();
         }
     }
 
@@ -48,6 +68,8 @@ export default function ActivityAddtion({addActivityFun, currentActivityName}){
         <View style = {styles.container}>
             <TextInput 
              style= {styles.inputStyle}
+             multiline
+             numberOfLines={2}
              value=  {state.activityName} //{currentActivityName} 
              placeholder= "Enter your activity"
              onChangeText={(name)=>{
