@@ -50,8 +50,6 @@ export default function ActivityAddtion({addActivityFun, currentActivityName}){
         <View style = {styles.container}>
             <TextInput 
              style= {styles.inputStyle}
-             multiline
-             numberOfLines={2}
              value=  {state.activityName} //{currentActivityName} 
              placeholder= "Enter your activity"
              onChangeText={(name)=>{
