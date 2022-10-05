@@ -63,7 +63,6 @@ export default function Home(){
     }
 
     const setEditedActivityInfo = function(currentKey, currentName){
-      console.log("set");
       setState((prevState)=>{
         return {...prevState, activityKey: currentKey, activityName: currentName }
       }) 
@@ -73,7 +72,6 @@ export default function Home(){
         setState((prevState)=>{
           return {...prevState,  activityName:name }
         }) 
-        console.log(state.activityName) 
     }
 
     const editeActivity = function(activityKey, activityName){
