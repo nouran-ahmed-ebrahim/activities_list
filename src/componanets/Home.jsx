@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, View, StyleSheet } from "react-native";
+import { ImageBackground, View, StyleSheet, Platform } from "react-native";
 import ActivityAddtion from "./AcitvityAddtion";
 import ActivitiesList from "./ActivitiesList";
 
@@ -15,10 +15,30 @@ export default function Home(){
         {key:4, name :"Study", date: "9/29/2022, 5:42:36 PM"},  
     ]});
   
+    
+    const successfulAdditionAlert= function(){
+      Alert.alert(
+        "Successful Addition",
+        "Activity added Successful",
+        [
+          { text: "OK"}
+        ]
+      );
+      }  
+
+    const launchSuccessfulAdditionAlert= function(){
+      if(Platform.OS === "web"){
+        confirm("Activity added Successful!");
+       }
+       else{
+         successfulAdditionAlert();
+       }
+    }
 
     const newActivity =  function(newActivityName) {
         if(state.activityKey === -1){
             addActivity(newActivityName);
+             launchSuccessfulAdditionAlert();
         }
         else{
             editeActivity(state.activityKey, newActivityName);
