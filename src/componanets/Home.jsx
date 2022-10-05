@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, View, StyleSheet, Platform } from "react-native";
+import { ImageBackground, View, StyleSheet, Platform, Alert } from "react-native";
 import ActivityAddtion from "./AcitvityAddtion";
 import ActivitiesList from "./ActivitiesList";
 
