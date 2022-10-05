@@ -2,9 +2,9 @@ import  React from "react";
 import { View, StyleSheet , TextInput,Platform,Alert } from "react-native";
 import Appbutton from "./AppButton";
 
-export default function ActivityAddtion({addActivityFun, currentActivityName,  editHomeActivityName}){
+export default function ActivityAddtion({addActivityFun, currentActivityName}){
     const btn = ["Add", 200, 50, "#fcd0c7", "#661825", 20]
-   const [state, setState] = React.useState({activityName: ""});
+    const [state, setState] = React.useState({activityName: ""});
   
     const  emptyActivityAlert= function(){
     Alert.alert(
@@ -37,17 +37,12 @@ export default function ActivityAddtion({addActivityFun, currentActivityName,  e
     }
 
       const clearInputTextValue =function () {
-        // editHomeActivityName("");
         setState((prevState) => {
           return {...prevState, 
               activityName : ""};
           });
       }
       
-      function changeActivityName(newActivityName){
-        
-          // editHomeActivityName(newActivityName);
-      }
 
     return(
         <View style = {styles.container}>
@@ -60,7 +55,7 @@ export default function ActivityAddtion({addActivityFun, currentActivityName,  e
                 return {...prevState, 
                     activityName : name};
                  });
-             }}
+              }}
              >
              </TextInput>
              <View>
